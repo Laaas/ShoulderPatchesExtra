@@ -1,5 +1,5 @@
 --[[
- 	ShoulderPatchesExtra
+	ShoulderPatchesExtra
 	ZycaR (c) 2016
 ]]
 
@@ -22,5 +22,25 @@ kShoulderPatchNames = {
     "Gretel",
     "Yolo",
     "NS2:Combat Event",
-    "Cactuar"
+    "Cactuar",
+	"Duck",
+	"fbshoulder",
+	"Tanstaafl",
+	"Priest",
+	"parche",
+	"che",
+	"Tank",
+	"MajorK",
+	"Wooza Approved Patch",
+	"Otter_Patch",
+	"Alien4",
+	"Patch52",
+	"Rose",
+	"QuackerJack",
+	"MalpraveShoulder",
+	"Yolo2",
+	"Yolo3",
+	"8Bit",
+	"Fire"
+
 }

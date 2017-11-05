@@ -1,9 +1,9 @@
 --[[
- 	ShoulderPatchesExtra
+	ShoulderPatchesExtra
 	ZycaR (c) 2016
 ]]
 
-Script.Load("lua/spe_ShoulderPatchesMixin.lua")
+Script.Load("lua/spe/ShoulderPatchesMixin.lua")
 
 local ns2_OnInitialized = Player.OnInitialized
 function Player:OnInitialized()
@@ -16,14 +16,14 @@ if Server then
     -- Copy patches data from player to spectator and back for respawn purpose
     local ns2_CopyPlayerDataFrom = Player.CopyPlayerDataFrom
     function Player:CopyPlayerDataFrom(player)
-        ns2_CopyPlayerDataFrom(self, player)
-        self.spePatchIndex = player.spePatchIndex
-        self.spePatchEffect = player.spePatchEffect
-        self.spePatches = player.spePatches
-        self.speOptionsSent = player.speOptionsSent
+	ns2_CopyPlayerDataFrom(self, player)
+	self.spePatchIndex = player.spePatchIndex
+	self.spePatchEffect = player.spePatchEffect
+	self.spePatches = player.spePatches
+	self.speOptionsSent = player.speOptionsSent
     end
 
 end
 
 -- Modder's version of AddMixinNetworkVars()
-Shared.LinkClassToMap("Player", Player.kMapName, ShoulderPatchesMixin.networkVars)
+Shared.LinkClassToMap("Player", nil, ShoulderPatchesMixin.networkVars)

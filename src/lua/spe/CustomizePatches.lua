@@ -1,9 +1,9 @@
 --[[
- 	ShoulderPatchesExtra
+	ShoulderPatchesExtra
 	ZycaR (c) 2016
 ]]
-Script.Load("lua/spe_ShoulderPatchesConfig.lua")
-Script.Load("lua/spe_ShoulderPatchesMessage.lua")
+Script.Load("lua/spe/ShoulderPatchesConfig.lua")
+Script.Load("lua/spe/ShoulderPatchesMessage.lua")
 
 local speMenuOptions = {
     name  = "ShoulderPatch",
@@ -30,19 +30,20 @@ function GUIMainMenu:CreateCustomizeWindow()
     local patchNames = ShoulderPatchesConfig:GetClientShoulderPatchNames(player)
     local patchName, index = ShoulderPatchesConfig:GetClientShoulderPatch(player)
 
-    LoadCSSFile("lua/spe.css")
+    LoadCSSFile("lua/spe/spe.css")
+
 
     -- create container
     self.spe = CreateMenuElement(self.mainWindow, "ContentBox", true)
     self.spe:SetCSSClass("shoulder_patches_wrapper")
 
     self.customizeFrame:AddEventCallbacks({
-        OnHide = function(self)
-            self.scriptHandle.spe:SetIsVisible(false)
-        end
+	OnHide = function(self)
+	    self.scriptHandle.spe:SetIsVisible(false)
+	end
     })
 
-    -- create from
+    -- create form
     local form = CreateMenuElement(self.spe, "Form", true)
     form:SetCSSClass("options")
 
@@ -61,23 +62,24 @@ function GUIMainMenu:CreateCustomizeWindow()
     input:SetTopOffset(35)
 
     local function OnMouseInFn(self)
-        local showModelType = "decal"
-        local currentModel = Client.GetOptionString("currentModel", "")
-        Client.SetOptionString("currentModel", input:GetFormElementName())
+	local showModelType = "decal"
+	local currentModel = Client.GetOptionString("currentModel", "")
+	Client.SetOptionString("currentModel", input:GetFormElementName())
 
-        if input:GetFormElementName() ~= currentModel or menuRefresed == true then
-            if Client.GetOptionString("lastShownModel", "") ~= showModelType then
-                MenuPoses_SetPose("idle", showModelType, true)
-                MenuPoses_Function():SetCoordsOffset(showModelType)
-            end
+	if input:GetFormElementName() ~= currentModel or menuRefresed == true then
+	    if Client.GetOptionString("lastShownModel", "") ~= showModelType then
+		MenuPoses_SetPose("idle", showModelType, true)
+		MenuPoses_Function():SetCoordsOffset(showModelType)
+	    end
 
-            Client.SetOptionString("lastShownModel", showModelType)
-            Client.SetOptionString("lastModel", input:GetFormElementName())
-            menuRefresed = false
-        end
+	    Client.SetOptionString("lastShownModel", showModelType)
+	    Client.SetOptionString("lastModel", input:GetFormElementName())
+	    menuRefresed = false
+	end
     end
+
     for index, child in ipairs(input:GetChildren()) do
-        child:AddEventCallbacks({ OnMouseIn = OnMouseInFn })
+	child:AddEventCallbacks({ OnMouseIn = OnMouseInFn })
     end
 
     self.customizeElements[speMenuOptions.name] = input

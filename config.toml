@@ -1,0 +1,7 @@
+
+[master]
+name            = "Shoulder Patches Extra Fixed"
+tags            = ["Look And Feel", "Must Be Run On Server"]
+autodescription = true
+description     = "README.md"
+preview         = "preview.jpg"

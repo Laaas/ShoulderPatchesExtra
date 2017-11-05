@@ -1,3 +1,6 @@
+# What is this?
+This is a fixed version of ZycaR's Shoulder Patches Extra mod, which broke with build 319.
+
 # ShoulderPatchesExtra
 **ZycaR (c) 2016**
 
